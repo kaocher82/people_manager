@@ -1,0 +1,40 @@
+{% extends 'people_manager/base.html' %}
+
+{% block content %}
+<p class="font-weight-bold">
+  Search People
+</p>
+<!-- person search -->
+<form action="/search" method="get">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Search" />
+</form>
+<!-- end of person search -->
+{% if people %}
+    <ul class="list-group">
+    {% for person in people %}
+        <li class="list-group-item">
+          <span class="font-weight-bold">name:</span>
+          <span>
+            {{ person.name }}
+          </span>
+          <span class="font-weight-bold">email:</span>
+          <span>
+            {{person.email}}
+          </span>
+          <a href="{% url 'people_manager:show' person.id %}" style="text-decoration:none">
+            View
+          </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No records were found with these search parameters.</p>
+{% endif %}
+<a href="{% url 'people_manager:index' %}">
+  <button type="button" class="btn" style="margin-top:20px">
+    Back
+  </button>
+</a>
+{% endblock %}

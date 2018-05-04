@@ -1,0 +1,17 @@
+{% extends 'people_manager/base.html' %}
+
+{% block content %}
+<p class="font-weight-bold">
+  Create Person
+</p>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit" />
+</form>
+<a href="{% url 'people_manager:index' %}">
+  <button type="button" class="btn" style="margin-top:20px">
+    Cancel
+  </button>
+</a>
+{% endblock %}

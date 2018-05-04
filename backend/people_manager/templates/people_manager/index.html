@@ -1,0 +1,38 @@
+{% extends 'people_manager/base.html' %}
+
+{% block content %}
+<!-- person search -->
+<form action="/search" method="get">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Search" />
+</form>
+<!-- end of person search -->
+<p>
+  <a href="{% url 'people_manager:new' %}">
+    Create new person
+  </a>
+</p>
+<!-- people list -->
+{% if people %}
+    <ul class="list-group">
+    {% for person in people %}
+        <li class="list-group-item">
+          <span class="font-weight-bold">name: </span>
+          <span>
+              {{ person.name }}
+          </span>
+          <span class="font-weight-bold">email: </span>
+          <span>
+            {{person.email}}
+          </span>
+          <a href="{% url 'people_manager:show' person.id %}" style="text-decoration:none">
+            View
+          </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No people are available.</p>
+{% endif %}
+{% endblock %}

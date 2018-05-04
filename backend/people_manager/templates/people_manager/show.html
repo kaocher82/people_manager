@@ -1,0 +1,23 @@
+{% extends 'people_manager/base.html' %}
+
+{% block content %}
+<p class="font-weight-bold">
+  View Person
+</p>
+<ul class="list-group">
+  <li class="list-group-item">
+    id: {{person.id}}
+  </li>
+  <li class="list-group-item">
+    name: {{ person.name }}
+  </li>
+  <li class="list-group-item">
+    email: {{person.email}}
+  </li>
+</ul>
+<a href="{% url 'people_manager:index' %}">
+  <button type="button" class="btn" style="margin-top:20px">
+    Back
+  </button>
+</a>
+{% endblock %}
