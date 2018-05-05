@@ -20,7 +20,7 @@ services:
 
   frontend:
     build: ./frontend
-    command: npm start
+    command: serve -s dist
     ports:
       - "5000:5000"
     depends_on:

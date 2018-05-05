@@ -2,7 +2,7 @@ from django.test import TestCase, Client
 from people_manager.models import Person
 from people_manager.forms import PersonForm
 
-class PersonTestViews(TestCase):
+class PeopleManagerTestViews(TestCase):
     def setUp(self):
         Person.objects.create(name='cody',email='cody@gmail.com')
         Person.objects.create(name='geoff',email='geoff@gmail.com')
@@ -29,8 +29,8 @@ class PersonTestViews(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_new_post(self):
-        response = self.client.post('/new/', {'name': 'ben', 'email': 'ben@gmail.com'})
-        self.assertEqual(response.status_code, 302)
+        response = self.client.post('/new/', {'name': 'ben', 'email': 'ben@gmail.com'}, follow=True)
+        self.assertEqual(response.status_code, 200)
         person = Person.objects.last()
         self.assertEqual(person.name, 'ben')
 
