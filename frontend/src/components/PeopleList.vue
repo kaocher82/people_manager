@@ -5,6 +5,9 @@
     <input type="text" v-model="name" placeholder="Filter name..." />
     <label>Email: </label>
     <input type="text" v-model="email" placeholder="Filter email..." />
+    <button @click="clearFilter" type="button" class="btn">
+      Clear
+    </button>
     <ul class="list-group">
       <li class="list-group-item">
         <router-link to="/new">Create new person</router-link>
@@ -39,6 +42,12 @@ export default {
       people: [],
       name: '',
       email: ''
+    }
+  },
+  methods: {
+    clearFilter () {
+      this.name = ''
+      this.email = ''
     }
   },
   computed: {

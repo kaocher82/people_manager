@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="container">
     <h1>People Manager | Vuejs </h1>
     <router-view/>
   </div>

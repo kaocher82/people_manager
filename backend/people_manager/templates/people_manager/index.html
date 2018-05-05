@@ -8,14 +8,14 @@
     <input type="submit" value="Search" />
 </form>
 <!-- end of person search -->
-<p>
-  <a href="{% url 'people_manager:new' %}">
-    Create new person
-  </a>
-</p>
 <!-- people list -->
-{% if people %}
-    <ul class="list-group">
+<ul class="list-group">
+  <li class="list-group-item">
+    <a href="{% url 'people_manager:new' %}">
+      Create new person
+    </a>
+  </li>
+  {% if people %}
     {% for person in people %}
         <li class="list-group-item">
           <span class="font-weight-bold">name: </span>
