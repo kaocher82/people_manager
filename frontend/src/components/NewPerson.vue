@@ -4,15 +4,15 @@
     <p class="font-weight-bold"> Create a person </p>
     <div>
       <label>Name:</label>
-      <input v-model="fields.name" type="text" placeholder="enter name of person..." />
+      <input v-model="fields.name" type="text" id="nameInput" placeholder="enter name of person..." />
       <p style="color:red">{{errors.name}}</p>
     </div>
     <div>
       <label>Email:</label>
-      <input v-model="fields.email" type="text" placeholder="enter email of person..." />
+      <input v-model="fields.email" type="text" id="emailInput" placeholder="enter email of person..." />
       <p style="color:red">{{errors.email}}</p>
     </div>
-    <button type="submit" class="btn"> Submit </button>
+    <button type="submit" class="btn" id="submit"> Submit </button>
     <router-link to="/">Back</router-link>
   </form>
 </div>
@@ -36,20 +36,21 @@ export default {
     }
   },
   methods: {
-    submitPerson () {
+    submitPerson (e) {
+      e.preventDefault()
       var self = this
 
       self.errors = self.validatePerson()
-      if (Object.keys(self.errors).length) return
-
-      var data = {name: self.fields.name, email: self.fields.email}
-      axios.post('http://0.0.0.0:8000/vue_manager/', data)
-        .then(function (response) {
-          self.$router.push('/')
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
+      if (Object.keys(self.errors).length === 0) {
+        var data = {name: self.fields.name, email: self.fields.email}
+        axios.post('http://0.0.0.0:8000/vue_manager/', data)
+          .then(function (response) {
+            self.$router.push('/')
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      }
     },
     validatePerson () {
       const errors = {}

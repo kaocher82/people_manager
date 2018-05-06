@@ -2,9 +2,9 @@
   <div>
     <span class="font-weight-bold">Filter:</span>
     <label>Name: </label>
-    <input type="text" v-model="name" placeholder="Filter name..." />
+    <input type="text" id="nameFilter" v-model="name" placeholder="Filter name..." />
     <label>Email: </label>
-    <input type="text" v-model="email" placeholder="Filter email..." />
+    <input type="text" id="emailFilter" v-model="email" placeholder="Filter email..." />
     <button @click="clearFilter" type="button" class="btn">
       Clear
     </button>
