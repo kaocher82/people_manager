@@ -4,7 +4,7 @@ from vue_manager import views
 
 app_name = 'vue_manager'
 urlpatterns = [
-    path('people/', views.PersonList.as_view())
+    path('', views.PersonList.as_view())
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

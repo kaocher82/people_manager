@@ -43,7 +43,7 @@ export default {
       if (Object.keys(self.errors).length) return
 
       var data = {name: self.fields.name, email: self.fields.email}
-      axios.post('http://0.0.0.0:8000/vue_manager/people/', data)
+      axios.post('http://0.0.0.0:8000/vue_manager/', data)
         .then(function (response) {
           self.$router.push('/')
         })

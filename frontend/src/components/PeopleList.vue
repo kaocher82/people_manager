@@ -64,7 +64,7 @@ export default {
   },
   created: function () {
     var self = this
-    axios.get('http://0.0.0.0:8000/vue_manager/people/')
+    axios.get('http://0.0.0.0:8000/vue_manager/')
       .then(function (response) {
         self.people = response.data
       })
